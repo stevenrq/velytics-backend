@@ -1,0 +1,9 @@
+{
+  "NOT_FOUND": "Usuario no encontrado.",
+  "ROLE_UPDATE_FORBIDDEN": "No tiene permisos para modificar los roles de un usuario.",
+  "STATUS_CHANGE_FORBIDDEN": "No tiene permisos para cambiar el estado de un usuario; use PATCH /:id/status.",
+  "UNKNOWN_ROLES": "Roles desconocidos: {roles}.",
+  "BREACHED_PASSWORD": "Esta contraseña ha aparecido en una filtración pública de datos; elija una diferente.",
+  "CURRENT_PASSWORD_REQUIRED": "Debe proporcionar su contraseña actual para cambiarla.",
+  "CURRENT_PASSWORD_INVALID": "La contraseña actual es incorrecta."
+}

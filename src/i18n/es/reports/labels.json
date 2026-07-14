@@ -1,0 +1,55 @@
+{
+  "title": "Reporte de contratos de compraventa — Velytics",
+  "sheetName": "Contratos",
+  "filenamePrefix": "reporte-contratos",
+  "rangeAll": "Todos los contratos",
+  "rangeBetween": "Del {start} al {end}",
+  "openEnd": "...",
+  "headers": {
+    "ID": "ID",
+    "TYPE": "Tipo",
+    "STATUS": "Estado",
+    "CLIENT": "Cliente",
+    "IDENTIFIER": "Identificación",
+    "USER": "Responsable",
+    "VEHICLE": "Vehículo",
+    "PURCHASE_PRICE": "Precio compra",
+    "SALE_PRICE": "Precio venta",
+    "PAYMENT_METHOD": "Método de pago",
+    "PAYMENT_TERMS": "Términos de pago",
+    "LIMITATIONS": "Limitaciones",
+    "OBSERVATIONS": "Observaciones",
+    "CREATED": "Creado",
+    "UPDATED": "Actualizado",
+    "DATE": "Fecha"
+  },
+  "contractType": {
+    "PURCHASE": "Compra",
+    "SALE": "Venta"
+  },
+  "contractStatus": {
+    "PENDING": "Pendiente",
+    "ACTIVE": "Activo",
+    "COMPLETED": "Completado",
+    "CANCELED": "Cancelado"
+  },
+  "paymentMethod": {
+    "CASH": "Efectivo",
+    "BANK_TRANSFER": "Transferencia bancaria",
+    "BANK_DEPOSIT": "Consignación bancaria",
+    "CASHIERS_CHECK": "Cheque de gerencia",
+    "MIXED": "Mixto",
+    "FINANCING": "Financiación",
+    "DIGITAL_WALLET": "Billetera digital",
+    "TRADE_IN": "Retoma de vehículo",
+    "INSTALLMENT_PAYMENT": "Pago a cuotas"
+  },
+  "vehicleStatus": {
+    "AVAILABLE": "Disponible",
+    "SOLD": "Vendido",
+    "IN_MAINTENANCE": "En mantenimiento",
+    "IN_REPAIR": "En reparación",
+    "IN_USE": "En uso",
+    "INACTIVE": "Inactivo"
+  }
+}

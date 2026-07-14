@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    // Same TS5011 issue as tsconfig.build.json, but hit via ts-jest instead of
+    // `nest build`. Separate from jest's own "rootDir": "src" in package.json,
+    // which only affects Jest's test discovery, not TypeScript's output layout.
+    "rootDir": "./src"
+  },
+  "include": ["src/**/*"]
+}

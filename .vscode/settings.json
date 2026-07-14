@@ -1,0 +1,9 @@
+{
+  // Pin the editor's TypeScript language service to this project's own
+  // node_modules/typescript instead of VS Code's bundled version. Without
+  // this, tsserver silently uses whatever TS ships with the VS Code build
+  // (e.g. 6.0.3), which can disagree with `tsc` run from node_modules (5.9.3)
+  // on diagnostics like ts(2564) even with identical tsconfig.json settings.
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
+}

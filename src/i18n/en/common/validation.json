@@ -1,0 +1,19 @@
+{
+  "NATIONAL_ID": "The national ID must be between 7 and 10 digits.",
+  "PHONE": "The phone number must be exactly 10 digits.",
+  "IS_STRING": "The {property} field must be a string.",
+  "IS_EMAIL": "The {property} field must be a valid email address.",
+  "IS_NOT_EMPTY": "The {property} field is required.",
+  "IS_BOOLEAN": "The {property} field must be true or false.",
+  "IS_ARRAY": "The {property} field must be a list.",
+  "IS_INT": "The {property} field must be an integer.",
+  "LENGTH": "The {property} field must be between {constraints.0} and {constraints.1} characters.",
+  "MAX_LENGTH": "The {property} field must not exceed {constraints.0} characters.",
+  "IS_NUMBER": "The {property} field must be a number.",
+  "MIN": "The {property} field must be greater than or equal to {constraints.0}.",
+  "MAX": "The {property} field must be less than or equal to {constraints.0}.",
+  "IS_ENUM": "The {property} field has an invalid value.",
+  "IS_DATE_STRING": "The {property} field must be a valid ISO 8601 date.",
+  "ARRAY_UNIQUE": "The {property} field must not contain duplicate values.",
+  "IS_IN": "The {property} field must be one of the following values: {constraints.0}."
+}

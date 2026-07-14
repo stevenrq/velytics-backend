@@ -1,0 +1,9 @@
+{
+  "VEHICLE_NOT_FOUND": "Vehicle not found.",
+  "IMAGE_NOT_FOUND": "Image not found.",
+  "KEY_MISMATCH": "The object key does not belong to this vehicle.",
+  "UPLOADED_OBJECT_NOT_FOUND": "The object uploaded to S3 for that key was not found.",
+  "CONTENT_TYPE_MISMATCH": "The content-type does not match the uploaded object.",
+  "SIZE_MISMATCH": "The size does not match the uploaded object.",
+  "DUPLICATE_IMAGE": "An image with that key or name already exists."
+}

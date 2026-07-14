@@ -1,0 +1,4 @@
+{
+  "ADMIN": "Role with full system access.",
+  "USER": "Base role for standard system users."
+}

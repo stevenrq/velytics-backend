@@ -1,0 +1,19 @@
+{
+  "NATIONAL_ID": "La cédula debe tener entre 7 y 10 dígitos.",
+  "PHONE": "El teléfono debe tener exactamente 10 dígitos.",
+  "IS_STRING": "El campo {property} debe ser un texto.",
+  "IS_EMAIL": "El campo {property} debe ser un correo válido.",
+  "IS_NOT_EMPTY": "El campo {property} es obligatorio.",
+  "IS_BOOLEAN": "El campo {property} debe ser verdadero o falso.",
+  "IS_ARRAY": "El campo {property} debe ser una lista.",
+  "IS_INT": "El campo {property} debe ser un número entero.",
+  "LENGTH": "El campo {property} debe tener entre {constraints.0} y {constraints.1} caracteres.",
+  "MAX_LENGTH": "El campo {property} no debe superar {constraints.0} caracteres.",
+  "IS_NUMBER": "El campo {property} debe ser un número.",
+  "MIN": "El campo {property} debe ser mayor o igual a {constraints.0}.",
+  "MAX": "El campo {property} debe ser menor o igual a {constraints.0}.",
+  "IS_ENUM": "El campo {property} tiene un valor no válido.",
+  "IS_DATE_STRING": "El campo {property} debe ser una fecha ISO 8601 válida.",
+  "ARRAY_UNIQUE": "El campo {property} no debe contener valores duplicados.",
+  "IS_IN": "El campo {property} debe ser uno de los siguientes valores: {constraints.0}."
+}

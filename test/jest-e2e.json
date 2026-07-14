@@ -1,0 +1,12 @@
+{
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": ".",
+  "testEnvironment": "node",
+  "testRegex": ".e2e-spec.ts$",
+  "transform": {
+    "^.+\\.(t|j)s$": ["ts-jest", { "tsconfig": "tsconfig.e2e.json" }]
+  },
+  "moduleNameMapper": {
+    "^hibp$": "<rootDir>/../src/testing/hibp.mock.ts"
+  }
+}

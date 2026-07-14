@@ -1,0 +1,22 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    // TS 6 requires an explicit rootDir when emitting with declaration+outDir;
+    // without it, `nest build` fails with TS5011.
+    "rootDir": "./src",
+    // Keep the incremental cache inside dist/ so `deleteOutDir` wipes it
+    // together with the output; otherwise a stale cache at the repo root
+    // survives a dist wipe and tsc skips re-emitting everything.
+    "tsBuildInfoFile": "./dist/tsconfig.build.tsbuildinfo"
+  },
+  "exclude": [
+    "node_modules",
+    "test",
+    "dist",
+    "generated",
+    "prisma",
+    "prisma.config.ts",
+    "src/testing",
+    "**/*spec.ts"
+  ]
+}

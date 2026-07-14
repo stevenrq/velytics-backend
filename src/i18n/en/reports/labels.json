@@ -1,0 +1,55 @@
+{
+  "title": "Purchase-sale contracts report — Velytics",
+  "sheetName": "Contracts",
+  "filenamePrefix": "contracts-report",
+  "rangeAll": "All contracts",
+  "rangeBetween": "From {start} to {end}",
+  "openEnd": "...",
+  "headers": {
+    "ID": "ID",
+    "TYPE": "Type",
+    "STATUS": "Status",
+    "CLIENT": "Client",
+    "IDENTIFIER": "Identifier",
+    "USER": "Handled by",
+    "VEHICLE": "Vehicle",
+    "PURCHASE_PRICE": "Purchase price",
+    "SALE_PRICE": "Sale price",
+    "PAYMENT_METHOD": "Payment method",
+    "PAYMENT_TERMS": "Payment terms",
+    "LIMITATIONS": "Limitations",
+    "OBSERVATIONS": "Observations",
+    "CREATED": "Created",
+    "UPDATED": "Updated",
+    "DATE": "Date"
+  },
+  "contractType": {
+    "PURCHASE": "Purchase",
+    "SALE": "Sale"
+  },
+  "contractStatus": {
+    "PENDING": "Pending",
+    "ACTIVE": "Active",
+    "COMPLETED": "Completed",
+    "CANCELED": "Canceled"
+  },
+  "paymentMethod": {
+    "CASH": "Cash",
+    "BANK_TRANSFER": "Bank transfer",
+    "BANK_DEPOSIT": "Bank deposit",
+    "CASHIERS_CHECK": "Cashier's check",
+    "MIXED": "Mixed",
+    "FINANCING": "Financing",
+    "DIGITAL_WALLET": "Digital wallet",
+    "TRADE_IN": "Vehicle trade-in",
+    "INSTALLMENT_PAYMENT": "Installment payment"
+  },
+  "vehicleStatus": {
+    "AVAILABLE": "Available",
+    "SOLD": "Sold",
+    "IN_MAINTENANCE": "In maintenance",
+    "IN_REPAIR": "In repair",
+    "IN_USE": "In use",
+    "INACTIVE": "Inactive"
+  }
+}

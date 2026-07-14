@@ -1,0 +1,4 @@
+{
+  "NOT_FOUND": "Rol no encontrado.",
+  "UNKNOWN_PERMISSIONS": "Permisos desconocidos: {permissions}."
+}

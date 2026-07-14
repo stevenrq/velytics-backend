@@ -1,0 +1,12 @@
+{
+  "ACCESS_TOKEN_REQUIRED": "An access token is required.",
+  "ACCESS_TOKEN_INVALID": "The access token is invalid or has expired.",
+  "ACCESS_TOKEN_REVOKED": "The access token has been revoked.",
+  "INSUFFICIENT_PERMISSIONS": "You do not have sufficient permissions for this operation.",
+  "INVALID_CREDENTIALS": "Invalid credentials.",
+  "INVALID_REFRESH_TOKEN": "Invalid refresh token.",
+  "REFRESH_TOKEN_REUSE_DETECTED": "Refresh token reuse detected; all sessions have been revoked.",
+  "MISSING_REFRESH_COOKIE": "The refresh cookie was not found.",
+  "MISSING_CSRF_TOKEN": "The CSRF token is missing.",
+  "CSRF_TOKEN_MISMATCH": "The CSRF token is invalid."
+}

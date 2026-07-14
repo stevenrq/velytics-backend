@@ -1,0 +1,8 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    // seed.ts imports from src/, outside this directory, so TS needs an
+    // explicit common rootDir (TS5011) covering both prisma/seed and src.
+    "rootDir": "../.."
+  }
+}

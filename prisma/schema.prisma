@@ -1,0 +1,306 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ---------------------------------------------------------------------------
+// Enums
+// ---------------------------------------------------------------------------
+
+enum ClientType {
+  PERSON
+  COMPANY
+}
+
+enum VehicleType {
+  CAR
+  MOTORCYCLE
+}
+
+enum VehicleStatus {
+  AVAILABLE
+  SOLD
+  IN_MAINTENANCE
+  IN_REPAIR
+  IN_USE
+  INACTIVE
+}
+
+enum ContractType {
+  PURCHASE
+  SALE
+}
+
+enum ContractStatus {
+  PENDING
+  ACTIVE
+  COMPLETED
+  CANCELED
+}
+
+enum PaymentMethod {
+  CASH
+  BANK_TRANSFER
+  BANK_DEPOSIT
+  CASHIERS_CHECK
+  MIXED
+  FINANCING
+  DIGITAL_WALLET
+  TRADE_IN
+  INSTALLMENT_PAYMENT
+}
+
+// ---------------------------------------------------------------------------
+// Identity & RBAC
+// ---------------------------------------------------------------------------
+
+model Address {
+  id     Int    @id @default(autoincrement())
+  street String @db.VarChar(100)
+  number String @db.VarChar(20)
+  city   String @db.VarChar(50)
+
+  user   User?
+  client Client?
+
+  @@map("addresses")
+}
+
+model User {
+  id          Int     @id @default(autoincrement())
+  nationalId  String  @unique @map("national_id") @db.VarChar(10)
+  firstName   String  @map("first_name") @db.VarChar(20)
+  lastName    String  @map("last_name") @db.VarChar(20)
+  email       String  @unique @db.VarChar(40)
+  phoneNumber String  @unique @map("phone_number") @db.VarChar(10)
+  username    String  @unique @db.VarChar(20)
+  password    String  @db.VarChar(72)
+  enabled     Boolean @default(true)
+
+  addressId Int?     @unique @map("address_id")
+  address   Address? @relation(fields: [addressId], references: [id])
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  roles              UserRole[]
+  refreshTokens      RefreshToken[]
+  purchaseSales      PurchaseSale[]
+  contractStatusLogs ContractStatusHistory[]
+
+  @@map("users")
+}
+
+model Role {
+  id          Int     @id @default(autoincrement())
+  name        String  @unique @db.VarChar(20)
+  description String? @db.Text
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  users       UserRole[]
+  permissions RolePermission[]
+
+  @@map("roles")
+}
+
+model Permission {
+  id          Int     @id @default(autoincrement())
+  name        String  @unique @db.VarChar(50)
+  description String? @db.Text
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  roles RolePermission[]
+
+  @@map("permissions")
+}
+
+model UserRole {
+  userId Int @map("user_id")
+  roleId Int @map("role_id")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role Role @relation(fields: [roleId], references: [id], onDelete: Cascade)
+
+  @@id([userId, roleId])
+  @@map("users_roles")
+}
+
+model RolePermission {
+  roleId       Int @map("role_id")
+  permissionId Int @map("permission_id")
+
+  role       Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permission Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  @@id([roleId, permissionId])
+  @@map("roles_permissions")
+}
+
+model RefreshToken {
+  id        Int       @id @default(autoincrement())
+  tokenHash String    @unique @map("token_hash") @db.Char(64)
+  userId    Int       @map("user_id")
+  expiresAt DateTime  @map("expires_at")
+  revoked   Boolean   @default(false)
+  revokedAt DateTime? @map("revoked_at")
+  createdAt DateTime  @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("refresh_tokens")
+}
+
+// ---------------------------------------------------------------------------
+// Clients (persons & companies, single-table)
+// ---------------------------------------------------------------------------
+
+model Client {
+  id          Int        @id @default(autoincrement())
+  type        ClientType
+  phoneNumber String     @unique @map("phone_number") @db.VarChar(10)
+  email       String     @unique @db.VarChar(40)
+  enabled     Boolean    @default(true)
+
+  addressId Int?     @unique @map("address_id")
+  address   Address? @relation(fields: [addressId], references: [id])
+
+  // PERSON subtype
+  nationalId String? @unique @map("national_id") @db.VarChar(10)
+  firstName  String? @map("first_name") @db.VarChar(30)
+  lastName   String? @map("last_name") @db.VarChar(30)
+
+  // COMPANY subtype
+  taxId       String? @unique @map("tax_id") @db.VarChar(10)
+  companyName String? @unique @map("company_name") @db.VarChar(30)
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  purchaseSales PurchaseSale[]
+
+  @@index([type])
+  @@map("clients")
+}
+
+// ---------------------------------------------------------------------------
+// Vehicles (cars & motorcycles, single-table)
+// ---------------------------------------------------------------------------
+
+model Vehicle {
+  id             Int           @id @default(autoincrement())
+  type           VehicleType
+  brand          String        @db.VarChar(20)
+  model          String        @db.VarChar(20)
+  line           String        @db.VarChar(20)
+  capacity       Int
+  plate          String        @unique @db.VarChar(10)
+  motorNumber    String        @unique @map("motor_number") @db.VarChar(30)
+  serialNumber   String        @unique @map("serial_number") @db.VarChar(30)
+  chassisNumber  String        @unique @map("chassis_number") @db.VarChar(30)
+  color          String        @db.VarChar(20)
+  cityRegistered String        @map("city_registered") @db.VarChar(30)
+  year           Int
+  mileage        Int
+  transmission   String        @db.VarChar(20)
+  status         VehicleStatus @default(AVAILABLE)
+  purchasePrice  Decimal       @map("purchase_price") @db.Decimal(12, 2)
+  salePrice      Decimal       @map("sale_price") @db.Decimal(12, 2)
+
+  // CAR subtype
+  bodyType      String? @map("body_type") @db.VarChar(20)
+  fuelType      String? @map("fuel_type") @db.VarChar(20)
+  numberOfDoors Int?    @map("number_of_doors")
+
+  // MOTORCYCLE subtype
+  motorcycleType String? @map("motorcycle_type") @db.VarChar(20)
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  images        VehicleImage[]
+  purchaseSales PurchaseSale[]
+
+  @@index([status])
+  @@index([brand, model])
+  @@index([year])
+  @@index([cityRegistered])
+  @@index([type])
+  @@map("vehicles")
+}
+
+model VehicleImage {
+  id        Int      @id @default(autoincrement())
+  vehicleId Int      @map("vehicle_id")
+  bucket    String   @db.VarChar(100)
+  key       String   @unique @db.VarChar(255)
+  fileName  String   @unique @map("file_name") @db.VarChar(255)
+  mimeType  String   @map("mime_type") @db.VarChar(100)
+  size      Int
+  isPrimary Boolean  @default(false) @map("is_primary")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  vehicle Vehicle @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+
+  @@index([vehicleId])
+  @@map("vehicle_images")
+}
+
+// ---------------------------------------------------------------------------
+// Purchase / sale contracts
+// ---------------------------------------------------------------------------
+
+model PurchaseSale {
+  id                 Int            @id @default(autoincrement())
+  clientId           Int            @map("client_id")
+  userId             Int            @map("user_id")
+  vehicleId          Int?           @map("vehicle_id")
+  purchasePrice      Decimal        @default(0) @map("purchase_price") @db.Decimal(12, 2)
+  salePrice          Decimal        @default(0) @map("sale_price") @db.Decimal(12, 2)
+  contractType       ContractType   @map("contract_type")
+  contractStatus     ContractStatus @default(PENDING) @map("contract_status")
+  paymentLimitations String         @map("payment_limitations") @db.VarChar(200)
+  paymentTerms       String         @map("payment_terms") @db.VarChar(200)
+  paymentMethod      PaymentMethod  @map("payment_method")
+  observations       String?        @db.VarChar(500)
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  client  Client   @relation(fields: [clientId], references: [id], onDelete: Restrict)
+  user    User     @relation(fields: [userId], references: [id], onDelete: Restrict)
+  vehicle Vehicle? @relation(fields: [vehicleId], references: [id], onDelete: Restrict)
+
+  statusHistory ContractStatusHistory[]
+
+  @@index([clientId])
+  @@index([userId])
+  @@index([vehicleId])
+  @@index([contractStatus])
+  @@index([contractType])
+  @@index([createdAt])
+  @@map("purchase_sales")
+}
+
+model ContractStatusHistory {
+  id             Int             @id @default(autoincrement())
+  purchaseSaleId Int             @map("purchase_sale_id")
+  previousStatus ContractStatus? @map("previous_status")
+  newStatus      ContractStatus  @map("new_status")
+  changedById    Int?            @map("changed_by")
+  changedAt      DateTime        @default(now()) @map("changed_at")
+  reason         String?         @db.VarChar(300)
+
+  purchaseSale PurchaseSale @relation(fields: [purchaseSaleId], references: [id], onDelete: Cascade)
+  changedBy    User?        @relation(fields: [changedById], references: [id], onDelete: SetNull)
+
+  @@index([purchaseSaleId])
+  @@map("contract_status_history")
+}

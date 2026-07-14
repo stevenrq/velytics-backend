@@ -1,0 +1,21 @@
+{
+  "titles": {
+    "400": "Invalid request",
+    "401": "Unauthenticated",
+    "403": "Forbidden",
+    "404": "Resource not found",
+    "409": "Conflict",
+    "422": "Unprocessable entity",
+    "429": "Too many requests",
+    "500": "Internal server error",
+    "default": "Error"
+  },
+  "VALIDATION_FAILED": "The request contains invalid data.",
+  "INTERNAL": "An unexpected error occurred.",
+  "DB_UNIQUE_VIOLATION": "A record with the same value already exists in: {fields}.",
+  "DB_UNIQUE_VIOLATION_GENERIC": "A record with those unique values already exists.",
+  "DB_NOT_FOUND": "The requested resource does not exist.",
+  "DB_FK_VIOLATION": "The operation violates a relationship with another resource (reference in use or nonexistent).",
+  "DB_UNKNOWN": "An unexpected error occurred while accessing the data.",
+  "CONCURRENT_MODIFICATION": "This record was modified by someone else since you last read it. Refresh and try again."
+}

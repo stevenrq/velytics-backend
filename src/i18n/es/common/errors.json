@@ -1,0 +1,21 @@
+{
+  "titles": {
+    "400": "Solicitud inválida",
+    "401": "No autenticado",
+    "403": "No autorizado",
+    "404": "Recurso no encontrado",
+    "409": "Conflicto",
+    "422": "Entidad no procesable",
+    "429": "Demasiadas solicitudes",
+    "500": "Error interno del servidor",
+    "default": "Error"
+  },
+  "VALIDATION_FAILED": "La solicitud contiene datos inválidos.",
+  "INTERNAL": "Ocurrió un error inesperado.",
+  "DB_UNIQUE_VIOLATION": "Ya existe un registro con el mismo valor en: {fields}.",
+  "DB_UNIQUE_VIOLATION_GENERIC": "Ya existe un registro con esos valores únicos.",
+  "DB_NOT_FOUND": "El recurso solicitado no existe.",
+  "DB_FK_VIOLATION": "La operación viola una relación con otro recurso (referencia en uso o inexistente).",
+  "DB_UNKNOWN": "Ocurrió un error inesperado al acceder a los datos.",
+  "CONCURRENT_MODIFICATION": "Este registro fue modificado por otra persona desde que lo leíste. Actualiza y vuelve a intentar."
+}

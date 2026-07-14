@@ -1,0 +1,4 @@
+{
+  "ADMIN": "Rol con acceso total al sistema.",
+  "USER": "Rol base para usuarios estándar del sistema."
+}

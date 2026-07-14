@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    // Same TS5011 issue as tsconfig.build.json/tsconfig.spec.json: e2e specs
+    // live in test/ but import from src/ (AppModule, DTOs, etc.), so TS needs
+    // an explicit rootDir covering both — the repo root itself.
+    "rootDir": "."
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "NOT_FOUND": "Contract not found.",
+  "CONTRACT_TYPE_IMMUTABLE": "The contract type cannot be changed.",
+  "DELETE_REQUIRES_CANCELED": "Only contracts in CANCELED status can be deleted.",
+  "VEHICLE_ID_AND_DATA_CONFLICT": "vehicleId and vehicleData cannot be sent at the same time.",
+  "VEHICLE_REQUIRED_FOR_PURCHASE": "vehicleId or vehicleData is required for a purchase contract.",
+  "VEHICLE_DATA_NOT_APPLICABLE_FOR_SALE": "vehicleData does not apply to a sale contract.",
+  "VEHICLE_ID_REQUIRED_FOR_SALE": "vehicleId is required for a sale contract.",
+  "VEHICLE_PURCHASE_PRICE_MUST_BE_POSITIVE": "The vehicle purchase price must be greater than zero.",
+  "CLIENT_NOT_FOUND": "Client {clientId} not found.",
+  "USER_NOT_FOUND": "User {userId} not found.",
+  "VEHICLE_NOT_FOUND": "Vehicle {vehicleId} not found.",
+  "CONFLICTING_PURCHASE_EXISTS": "A pending or active purchase already exists for this vehicle.",
+  "PURCHASE_PRICE_MUST_BE_POSITIVE": "The purchase price must be greater than zero.",
+  "NO_VALID_PURCHASE_FOR_SALE": "There is no active or completed purchase for this vehicle.",
+  "SALE_PRICE_MUST_BE_POSITIVE": "The sale price must be greater than zero.",
+  "CONFLICTING_SALE_EXISTS": "A pending, active or completed sale already exists for this vehicle."
+}
